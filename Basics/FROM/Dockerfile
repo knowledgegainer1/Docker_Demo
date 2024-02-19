@@ -4,4 +4,6 @@ FROM almalinux:8
 # ENTRYPOINT [ "ping" ]
 RUN adduser sada
 user sada
-CMD [ "sleep", "100" ]
+WORKDIR /tmp/
+RUN echo "hello you are in temp foldr now" > hellp.txt
+CMD [ "sleep", "10" ]
