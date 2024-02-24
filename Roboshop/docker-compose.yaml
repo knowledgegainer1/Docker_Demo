@@ -12,12 +12,13 @@ services:
   mongodb:
     image: mongodb:v1
     container_name: mongodb
+    networks:
+    - roboshop
     # volumes:
     # - source: mongodb
     #   target: /data/db
     #   type: volume
-    networks:
-    - roboshop
+    
 
   catalogue:
     image: catalogue:v1
