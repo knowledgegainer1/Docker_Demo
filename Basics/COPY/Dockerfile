@@ -1,4 +1,4 @@
-FROM  centos/go-toolset-7-centos7
+FROM  centos/nginx-110-centos
 RUN sudo yum install nginx -y
 RUN rm -rf /usr/share/nginx/html/index.html
 COPY  index.html /usr/share/nginx/html/
