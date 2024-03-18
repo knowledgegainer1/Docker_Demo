@@ -2,7 +2,7 @@ FROM node:18
 RUN useradd roboshop
 USER roboshop
 WORKDIR /app
-ADD https://roboshop-builds.s3.amazonaws.com/catalogue.zip /app/catalogue.zip
+RUN curl https://roboshop-builds.s3.amazonaws.com/catalogue.zip /app/catalogue.zip
 RUN unzip /app/catalogue.zip 
 RUN cd /app/catalogue
 RUN rm /app/catalogue
