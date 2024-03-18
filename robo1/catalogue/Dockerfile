@@ -6,7 +6,7 @@ RUN wget -O /app/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogu
 RUN unzip /app/catalogue.zip 
 WORKDIR /catalogue/
 COPY /* /app/
-RUN rm /app/catalogue
+
 RUN npm install 
 COPY catalogue.service /etc/systemd/system/catalogue.service
 COPY mongo.repo /etc/yum.repos.d/mongo.repo
