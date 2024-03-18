@@ -3,7 +3,7 @@ RUN useradd roboshop
 USER roboshop
 WORKDIR /app
 ADD https://roboshop-builds.s3.amazonaws.com/catalogue.zip /app/catalogue
-RUN unzip /app/catalogue -d /app/catalogue && rm /app/catalogue
+RUN sudo unzip /app/catalogue -d /app/catalogue && rm /app/catalogue
 RUN mv /app/catalogue/* /app/
 RUN npm install 
 COPY catalogue.service /etc/systemd/system/catalogue.service
