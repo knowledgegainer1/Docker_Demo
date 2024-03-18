@@ -4,7 +4,8 @@ USER roboshop
 WORKDIR /app
 RUN wget -O /app/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip 
 RUN unzip /app/catalogue.zip 
-COPY /app/catalogue/* /app/
+WORKDIR /catalogue/
+COPY /* /app/
 RUN rm /app/catalogue
 RUN npm install 
 COPY catalogue.service /etc/systemd/system/catalogue.service
