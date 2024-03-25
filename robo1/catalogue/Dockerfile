@@ -1,14 +1,12 @@
-FROM node:18
-RUN useradd roboshop
-USER roboshop
-WORKDIR /app
-RUN wget -O /app/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip 
-RUN unzip /app/catalogue.zip 
-WORKDIR /catalogue/
-COPY /* /app/
-
+ARG version=18
+FROM node:${version}
+ARG username=roboshop
+RUN useradd ${username}
+EXPOSE 8080
+WORKDIR /opt/server
+COPY package.json /opt/server/
+COPY server.json /opt/server/
+ENV MONGO=true
 RUN npm install 
-COPY catalogue.service /etc/systemd/system/catalogue.service
-COPY mongo.repo /etc/yum.repos.d/mongo.repo
-RUN dnf install mongodb-org-shell -y
-CMD ["node", "app.js"]
+USER ${username}
+CMD ["node", "server.js"]
